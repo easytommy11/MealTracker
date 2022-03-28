@@ -9,5 +9,6 @@ import Foundation
 
 struct Food{
     var name: String
-    var description:String 
+    var description:String
+    var symbol: String 
 }

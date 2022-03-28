@@ -10,19 +10,19 @@ import UIKit
 class FoodTableTableViewController: UITableViewController {
     
     var meals:[Meal]{
-        let firstBreakfastFood = Food(name: "Eggs", description: "Scrambled with bacon in a frying pan.")
-        let secondBreakfastFood = Food(name: "Hashbrowns", description: "Cut potatoes then fry in oil until brown")
-        let thridBreakfastFood = Food(name: "Bacon", description: "Key food in all breakfast meals.")
+        let firstBreakfastFood = Food(name: "Eggs", description: "Scrambled with bacon in a frying pan.", symbol: "🍳" )
+        let secondBreakfastFood = Food(name: "Hashbrowns", description: "Cut potatoes then fry in oil until brown", symbol: "🥔")
+        let thridBreakfastFood = Food(name: "Bacon", description: "Key food in all breakfast meals.", symbol: "🥓")
         let breakfast = Meal(name: "Breakfast", food: [firstBreakfastFood, secondBreakfastFood, thridBreakfastFood])
         
-        let firstLunchFood = Food(name: "Sandwich", description: "Easy to fix. Always delicous")
-        let secondLunchFood = Food(name: "Chips", description: "Put a few in the sandwich for enhanced flavor")
-        let thirdLuchFood = Food(name: "Apple", description: "An apple a day keeps the doctor away.")
+        let firstLunchFood = Food(name: "Sandwich", description: "Easy to fix. Always delicous", symbol: "🥪")
+        let secondLunchFood = Food(name: "Chips", description: "Put a few in the sandwich for enhanced flavor", symbol: "🍟 ")
+        let thirdLuchFood = Food(name: "Apple", description: "An apple a day keeps the doctor away.", symbol: "🍎")
         let lunch = Meal(name:"Lunch", food: [firstLunchFood, secondLunchFood, thirdLuchFood ])
         
-        let firstDinnerFood = Food(name: "Steak", description: "Everyone needs some good protein")
-        let SecondDinnerFood = Food(name: "Potatoes", description: "Great addition to go along with steak")
-        let thirdDinnerFood = Food(name: "Brocolli", description: "Always finish out the food pyramid")
+        let firstDinnerFood = Food(name: "Steak", description: "Everyone needs some good protein", symbol: "🥩")
+        let SecondDinnerFood = Food(name: "Potatoes", description: "Great addition to go along with steak", symbol: "🥔")
+        let thirdDinnerFood = Food(name: "Brocolli", description: "Always finish out the food pyramid", symbol: "🥦")
         let dinner = Meal(name:"Dinner", food: [firstDinnerFood, SecondDinnerFood, thirdDinnerFood ])
         
         return [breakfast, lunch, dinner]
@@ -47,7 +47,7 @@ class FoodTableTableViewController: UITableViewController {
         let meal = meals[indexPath.section]
         let food = meal.food[indexPath.row]
         
-        cell.textLabel?.text = food.name
+        cell.textLabel?.text = food.name + "" + food.symbol
         cell.detailTextLabel?.text = food.description
        
         return cell
@@ -55,7 +55,9 @@ class FoodTableTableViewController: UITableViewController {
     
 
     
-
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return meals[section].name
+    }
 
     /*
     // Override to support editing the table view.
